@@ -22,3 +22,5 @@ function each(collection, action) {
     }
 }
 module.exports.each = each;
+
+for(var i = 0)
