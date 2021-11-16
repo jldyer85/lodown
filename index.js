@@ -245,9 +245,9 @@ module.exports.partition = partition;
  * map: Designed to loop through an array or object and return a new array of values for whatever the test function calls for.
  * 
  * @param {Collection} collection: The collection whether an array or object that is looped through.
- * @param {Func} function: The test function that is called to test something to pass all values that pass that test into new array.
+ * @param {Func} function: The function that acts on all values that are passed through and put into a new array.
  * 
- * @return: Returns a new array with values that pass the test function.
+ * @return: Returns a new array with values that have been acted upon by the passed in function.
  */
  function map(collection, func) {
     var newArr = [];
@@ -366,13 +366,17 @@ module.exports.every = every;
 module.exports.some = some;
   
   /**
-   * reduce: Designed to reduce elements in an array down to one element. Or to return the sum of all elements in the array.
+   * reduce: Designed to reduce elements in an array down to one element. It accumulates values and will return whatever the 
+   * condition is looking for once it’s iterated through the entire loop.  This could be a sum of all or some values in the array
+   * or it could be a singular value that is being sought after. Reduce loops through and accumulates all values in an array
+   * and returns whatever the condition is looking for.
    * 
    * @param {Array} collection: The array that is looped through to reduce its elements.
-   * @param {Func} Function: The test function that is called to return a value used as "previous result" for next iteration in loop.
+   * @param {Func} Function: The test function that is called to return a value using a current iteration param, and an accumulator
+   *  or previous iteration param to be either compared to or included with the current iteration, dependent on the condition.
    * @param {Seed} Seed: The starting point for where the test function should begin after first iteration.
    * 
-   * @return: Returns one reduced value of all elements from array.
+   * @return: Returns a reduced value out of all the elements from the array based on conditions that have been met.
    */
    function reduce(collection, func, seed){
     if (seed === undefined) {
